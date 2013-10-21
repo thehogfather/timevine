@@ -39,7 +39,12 @@
         o.eventStroke = property.call(o, function (d) {
             return "#555";
         });
-        
+        o.events = function () {
+            return d3.selectAll("circle.event");
+        };
+        o.vines = function () {
+            return d3.selectAll("g.timevine");
+        };
         o.branches = property.call(o, "top"); //left|right|top|bottom|split (used to tell how to render the branching behaviour of the events)
         
         //maybe add a class function for the events
@@ -56,9 +61,7 @@
         }
         
         o.render = function (el) {
-            if (!o.data()) {
-                throw new Error("data object missing from visualisation.");
-            }
+            if (!o.data()) { throw new Error("data object missing from visualisation."); }
             
             el = el || "body";
             var margin = {top: 50, left: 120, right: 20, bottom: 20};
@@ -71,7 +74,6 @@
             } else {
                 margin.top = o.branches() === "top" ? o.height() + margin.bottom : margin.top;
             }
-            
            
             var tf = o.dateFunction(), orientMap = {left: "right", right: "left", top: "bottom", bottom: "top"};
             var data = sortData(o.data(), tf), firstEvent = data[0][0], lastEvent = data[data.length - 1][data[data.length - 1].length - 1];
@@ -114,7 +116,7 @@
             
             //container for paths
             var tvg = canvas.append("g").selectAll("g.timevine").data(data)
-                .enter().append("g");
+                .enter().append("g").attr("class", "timevine");
             //create vines using path elements
             var tvs = tvg.append("path").attr("d", function (d, i) {
                 d.forEach(function (c) { c.parentIndex = i; });
@@ -124,12 +126,13 @@
             var events = tvg.selectAll("circle.event").data(function (d) {
                 return d;
             }).enter().append("circle")
+                .attr("class", "event")
                 .attr("cx", xFunc)
                 .attr("cy", yFunc)
-                .attr("r", o.eventSize())
-                .style("fill", o.eventFill())
+                .attr("r", o.eventSize());
+               /* .style("fill", o.eventFill())
                 .style("stroke", o.eventStroke())
-                .style("stroke-width", "0.5px");
+                .style("stroke-width", "0.5px")*/
             
             
             return o;

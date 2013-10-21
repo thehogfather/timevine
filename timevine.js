@@ -4,8 +4,8 @@
  * @date 10/19/13 20:38:24 PM
  */
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
-/*global define, d3, require, $, brackets, window, MouseEvent */
-(function (){
+/*global define, d3, module, self, $, brackets, window, MouseEvent */
+(function () {
     "use strict";
     function property(v) {
         var p = function (_) {
@@ -138,5 +138,5 @@
         return o;
     }
     
-   d3.timevine = timevine;
+    d3.timevine = timevine;
 }());

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script src="../lib/d3.js"></script>
+        <script src="../timevine.js"></script>
+        <script src="../lib/require.js" data-main="index.js"></script>
+        <title>timevine Test</title>
+        
+        <style>
+            path {
+                stroke: rgba(177, 154, 154, 0.42);
+                stroke-width: 1px;
+                fill: none;
+            }
+            .axis path {
+                stroke-width: 2px;
+                stroke: rgb(62, 33, 33);
+            }
+            
+            #timevine circle{
+                fill: #e88383!important;
+            }
+            
+            #timevine text{
+                font-family: "courier new";
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <div id="timevine"> </div>
+    </body>
+</html>

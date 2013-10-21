@@ -1,3 +1,7 @@
 {
-    "name": "timevine"
+    "name": "timevine",
+    "version": "0.0.1",
+    "description": "Javascript d3js library for visualising timeline data",
+    "keywords": ["timeline", "events"],
+    "license": "MIT"
 }

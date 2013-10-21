@@ -15,14 +15,14 @@ require([], function () {
     function generateData(from, to, numBranches) {
         from = from || new Date(Date.parse("2010-05-05"));
         to = to || new Date();
-        numBranches = numBranches || 20;
-        var maxEventPerBranch = 12;
+        numBranches = numBranches || 15;
+        var maxEventPerBranch = 8;
         var span = to - from;
         
         var eventsList = d3.range(numBranches).map(function (n, i) {
             var start = new Date(from.getTime() + Math.floor(Math.random() * span));
             var extent = Math.random() * (to - start);
-            var events = d3.range(2 + Math.floor(Math.random() * maxEventPerBranch)).map(function (d) {
+            var events = d3.range(1 + Math.floor(Math.random() * maxEventPerBranch)).map(function (d) {
                 return new Date(start.getTime() + Math.floor(Math.random() * extent));
             });
             return events;
@@ -32,7 +32,7 @@ require([], function () {
     }
     //render the data
     var eventsList = generateData();
-    d3.timevine(eventsList).width(200).height(1200).orient("vertical").branches("left")
+    d3.timevine(eventsList).width(1200).height(200).orient("horizontal").branches("bottom")
         .eventSize(function (d) {
             return Math.max(1, 200 / eventsList.length) / 2;
         })

@@ -4,7 +4,7 @@ timevine is a  D3js plugin for rendering list of event sequences. Event sequence
 
 This visulisation was produced as part of a BBC newsHACK event in October 2013.
 
-![Screenshot](https://github.com/thehogfather/timevine/blob/master/sample/timevine.png)
+![Screenshot](https://github.com/thehogfather/timevine/blob/master/sample/timevine.png?raw=true)
 ##Usage
 See `sample/` directory.
 
